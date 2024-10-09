@@ -1,32 +1,56 @@
-# Prerequisites
-*.d
+#include <iostream>				
+#include <typeinfo>				
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
 
-# Precompiled Headers
-*.gch
-*.pch
+#include <cmath>
+#include <iomanip>
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
 
-# Fortran module files
-*.mod
-*.smod
+using namespace std;
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
 
-# Executables
-*.exe
-*.out
-*.app
+inline void _test(const char* expression, const char* file, int line)
+{
+	cerr << "test(" << expression << ") failed in file " << file;
+	cerr << ", line " << line << "." << endl << endl;
+}
+_))
+
+int main()
+{
+
+const double DOL2MEX = 17.47;
+const double DOL2EURO = 0.94;
+double dollar_fp, dollar_fe, total, pesos, euros;
+int wholedollarsp, centdollarsp, wholedollarse, centdollarse, wholetotal, centtotal;
+
+cout << "Mexican Peso and Euro to U.S. Dollar converter" <<endl;
+cout << endl;
+cout << "Please enter the amount in Pesos: ";
+cin >> pesos;
+cout << endl;
+dollar_fp= pesos/DOL2MEX;
+dollar_fp= round(dollar_fp*100.)/100.;
+wholedollarsp = static_cast <int>(dollar_fp); 
+centdollarsp = round((dollar_fp - wholedollarsp)*100); 
+
+cout << "Please enter the amount in Euros: ";
+cin >> euros;
+cout << endl;
+dollar_fe= euros/DOL2EURO;
+dollar_fe= round(dollar_fe*100)/100;
+wholedollarse = static_cast <int>(dollar_fe); 
+centdollarse = round((dollar_fe - wholedollarse)*100); 
+total= dollar_fp + dollar_fe;
+total = round(total * 100)/100;
+wholetotal = static_cast <int>(total); 
+centtotal = round((total - wholetotal)*100);
+
+cout << fixed << showpoint <<setprecision(2);
+cout << "Mexican Peso and Euro to U.S. Dollar converter" << endl;
+cout << endl;
+cout << setw(10) << pesos <<" pesos: " << setw(20) <<wholedollarsp << " US dollars with " << centdollarsp << " cents" <<endl;
+cout << endl;
+cout << setw(10) << euros << " euros: " << setw(20) << wholedollarse << " US dollars with " << centdollarse << " cents" << endl;
+cout << endl;
+cout << setw(18) << "Total: "<< setw(20) << wholetotal << " US dollars with " << centtotal << " cents";
